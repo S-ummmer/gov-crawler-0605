@@ -129,7 +129,7 @@ def fetch_detail(url):
     """Fetch detail page content."""
     try:
         r = requests.get(url, headers=COMMON_HEADERS, timeout=15, verify=False)
-        r.encoding = 'utf-8'
+        r.encoding = r.apparent_encoding
         soup = BeautifulSoup(r.text, 'html.parser')
         
         for tag in soup(['script', 'style', 'nav', 'header', 'footer', 'aside', 'iframe']):
